@@ -2,7 +2,7 @@ export default class DarkMode
 {
     constructor($target)
     {
-        this.$target = $target.querySelector("#isDarkMode");
+        this.$isDarkMode = $target.querySelector("#isDarkMode");
         if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
             this.$isDarkMode.setAttribute("checked", "checked");
             document.documentElement.classList.toggle("dark");
@@ -10,7 +10,7 @@ export default class DarkMode
         else
             document.documentElement.classList.toggle("light");
 
-        this.$target.addEventListener("click", _=> 
+        this.$isDarkMode.addEventListener("click", _=> 
         {
             document.documentElement.classList.toggle("light");
             document.documentElement.classList.toggle("dark");
