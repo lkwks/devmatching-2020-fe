@@ -3,7 +3,6 @@ const TEMPLATE = '<input type="text">';
 export default class SearchInput {
     
   constructor({ $target, onSearch, onRandom }) {
-    this.$target = $target;
     this.$searchInput = $target.querySelector(".SearchInput");
     this.latestQueriesBox = new LatestQueriesBox($target.querySelector("#LatestQueries"));
     
@@ -17,7 +16,7 @@ export default class SearchInput {
     
     this.$searchInput.addEventListener("click", _=> { this.$searchInput.value = ''; } );
     
-    this.$target.addEventListener("click", e=>
+    $target.addEventListener("click", e=>
     {
         if (e.target.nodeName === "BUTTON")
         {
