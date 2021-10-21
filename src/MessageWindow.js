@@ -1,11 +1,12 @@
 export default class 
 {
+    isVisible = false;
+    
     constructor($target)
     {
         this.$messageWindow = $target.querySelector(".MessageWindow");
         this.titleNode = this.$messageWindow.querySelector(".title");
         this.messageNode = this.$messageWindow.querySelector(".message");
-        this.isVisible = false;
         this.render();
     }
 
