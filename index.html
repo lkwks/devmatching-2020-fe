@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>고양이 사진 검색기</title>
+  </head>
+  <body>
+    <header>
+      <h1>Search Cat Pics</h1>
+    </header>
+    <main id="App">
+      <menu>
+        <li>
+          <input type=checkbox id="isDarkMode">Dark Mode
+        </li>
+      </menu>
+      <div class="SearchBox">
+        <div class="input-wrapper">
+          <button class="RandomCatsButton">Random Cats</button><input class="SearchInput" placeholder="고양이를 검색해보세요.|" autofocus>
+        </div>
+        <div class="LatestQueriesBox">최근 검색어: <span id="LatestQueries"></span></div>
+        <div class="RandomCatsList-wrapper">
+          <button class="RandomCatsListLeft">◀</button>
+          <div class="RandomCatsListOuter">
+            <ul class="RandomCatsList"></ul>
+          </div>
+          <button class="RandomCatsListRight">▶</button>
+        </div>
+      </div>
+      <ul class="SearchResult"></ul>
+      <div class="ImageInfo">
+        <article class="content-wrapper">
+          <h2 class="title">
+            <span></span>
+            <div class="close">x</div>
+          </h2>
+          <img/>
+          <ul class="description">
+          </ul>
+        </article>
+      </div>
+      <div class="MessageWindow">
+        <article class="content-wrapper">
+          <h2 class="title">
+          </h2>
+          <ul class="message">
+          </ul>
+        </article>
+      </div>
+    </main>
+    <script type="module" src="src/main.js"></script>
+  </body>
+</html>
