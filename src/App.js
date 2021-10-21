@@ -21,13 +21,13 @@ export default class App {
     this.messageWindow = new MessageWindow($target);
     this.loadingMessage = "now loading...";
     this.errorMessage = msg => `에러가 발생했습니다. ${msg}. 다시 로드하려면 <b>여기</b>를 클릭하세요.`;
-    this.onRandomInput = _=> this.onRandom(true, this.onRandomInput, false, true, false);
-    this.onRandomBanner = _=> this.onRandom(false, this.onRandomBanner, true, true, false);
-    this.onRandomScroll = _=> this.onRandom(false, this.onRandomScroll, false, true, true);
+    this.onRandomInput = async _=> await this.onRandom(true, this.onRandomInput, false, true, false);
+    this.onRandomBanner = async _=> await this.onRandom(false, this.onRandomBanner, true, true, false);
+    this.onRandomScroll = async _=> await this.onRandom(false, this.onRandomScroll, false, true, true);
 
     this.searchInput = new SearchInput({
       $target,
-      onSearch: keyword=>this.onSearch(keyword),
+      onSearch: async keyword=> await this.onSearch(keyword),
       onRandom: this.onRandomInput
     });
 
