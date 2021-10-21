@@ -6,7 +6,7 @@ export default class Banner
 
     constructor({$target, onRandom})
     {
-        this.randomCatsList = $target.querySelector(".RandomCatsList");
+        this.$target = $target.querySelector(".RandomCatsList");
         this.randomCatsListWrapper = $target.querySelector(".RandomCatsList-wrapper");
 
         this.randomCatsListWrapper.addEventListener("click", e=>
@@ -17,7 +17,7 @@ export default class Banner
                 this.idx++;
             if (this.idx < 0) this.idx = 0;
             if (this.idx > this.data.length-5) this.idx = this.data.length-5;
-            this.randomCatsList.style.transform = `translateX(${-this.idx * 100}px)`;
+            this.$target.style.transform = `translateX(${-this.idx * 100}px)`;
         });
 
         onRandom();
@@ -30,10 +30,10 @@ export default class Banner
     
     render()
     {
-        this.randomCatsList.innerHTML = this.data.map( image =>
+        this.$target.innerHTML = this.data.map( image =>
             {
                 return `<li style='background-image:url(${image.url})'>`
             }).join("");
-        lazyLoad(this.randomCatsList, 0);
+        lazyLoad(this.$target, 0);
     }
 }
