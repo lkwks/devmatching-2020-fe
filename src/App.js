@@ -21,9 +21,9 @@ export default class App {
     this.messageWindow = new MessageWindow($target);
     this.loadingMessage = "now loading...";
     this.errorMessage = msg => `에러가 발생했습니다. ${msg}. 다시 로드하려면 <b>여기</b>를 클릭하세요.`;
-    this.onRandomInput = async _=> await this.onRandom(true, this.onRandomInput, false, true, false);
-    this.onRandomBanner = async _=> await this.onRandom(false, this.onRandomBanner, true, true, false);
-    this.onRandomScroll = async _=> await this.onRandom(false, this.onRandomScroll, false, true, true);
+    this.onRandomInput = async _=> await this.onRandom(this.onRandomInput, false, true, false);
+    this.onRandomBanner = async _=> await this.onRandom(this.onRandomBanner, true, true, false);
+    this.onRandomScroll = async _=> await this.onRandom(this.onRandomScroll, false, true, true);
 
     this.searchInput = new SearchInput({
       $target,
@@ -77,9 +77,9 @@ export default class App {
       }
   }
 
-  async onRandom(useLoading, onClick, isBanner, isRandom, isScroll) 
+  async onRandom(onClick, isBanner, isRandom, isScroll) 
   {
-    if (useLoading)
+    if (!isBanner)
       this.messageWindow.setState({title:"", message: this.loadingMessage, isVisible: true});
     const res = await api.fetchRandomCats();
     if (res.isError)
@@ -89,9 +89,10 @@ export default class App {
       if (isBanner)
         this.banner.setState(res.data);
       else
+      {
         this.setState(res.data, isRandom, isScroll);
-      if (useLoading)
         this.messageWindow.setState({isVisible: false});
+      }
     }
   }
 }
