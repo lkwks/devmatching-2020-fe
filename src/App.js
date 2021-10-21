@@ -16,7 +16,7 @@ export default class App {
     this.$target = $target;
     this.searchResultSection = $target.querySelector(".SearchResult");
     
-    this.isDarkMode = new DarkMode({$target});
+    this.isDarkMode = new DarkMode($target);
 
     this.messageWindow = new MessageWindow($target);
     this.loadingMessage = "now loading...";
